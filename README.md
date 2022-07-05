@@ -106,6 +106,6 @@ Any serverless project must have an automated delivery pipeline with a proper se
 
 - It is also critical that these services do not share any private data and that all communication occurs through clearly defined APIs or queues.
 
-# Separate Code from the Configuration:
+## Separate Code from the Configuration:
 
 - Separating the code from the configuration is an important practice for achieving an automated delivery pipeline. Because the infrastructure is also code, we must ensure that both our infrastructure and the code are free of configuration data. If we separate the code and configuration, we can deploy the same code in development, testing, and production environments.

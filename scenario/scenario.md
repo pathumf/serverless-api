@@ -6,7 +6,7 @@ In order to design the architecture for the serverless APIs, I will be using the
 
 <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 
-![](TODO)
+![](./images/architechture.png)
 
 ## Security:
 

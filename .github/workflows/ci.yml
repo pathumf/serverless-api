@@ -37,9 +37,9 @@ jobs:
         run: terraform fmt -check -recursive modules
         continue-on-error: true
 
-      - name: Terraform Init
-        id: init
-        run: terraform init '-backend-config=bucket=tfstate-resources' '-backend-config=region=us-east-1' '-backend-config=key=tfstate/api/dev/serverless-api.tfstate'
+      # - name: Terraform Init
+      #   id: init
+      #   run: terraform init '-backend-config=bucket=tfstate-resources' '-backend-config=region=us-east-1' '-backend-config=key=tfstate/api/dev/serverless-api.tfstate'
 
       - name: Terraform Validate
         id: validate

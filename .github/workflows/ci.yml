@@ -54,4 +54,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false -env=dev -aws_region=us-east-1 -api_version=${GITHUB_SHA::8}
+        run: terraform apply -auto-approve -input=false -var env=dev -var aws_region=us-east-1 -var api_version=${GITHUB_SHA::7}

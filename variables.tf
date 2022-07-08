@@ -18,7 +18,7 @@ variable "app" {
 
 variable "api_version" {
   type        = string
-  default     = "v1.0.0"
+  default     = "v1.0.1"
   description = "Tag or commit hash"
 }
 

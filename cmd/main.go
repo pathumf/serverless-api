@@ -1,29 +1,27 @@
 package main
 
 import (
-	"errors"
+	"encoding/json"
 	"log"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-// Handler is Lambda function handler.
+type body struct {
+	Message string `json:"message"`
+}
+
+// Handler is the Lambda function handler
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	log.Println("Lambda request", request.RequestContext.RequestID)
 
-	// stdout and stderr are sent to AWS CloudWatch Logs
-	log.Printf("Processing Lambda request %v\n", request.RequestContext.RequestID)
-
-	// If no name is provided in the HTTP request body, throw an error
-	if len(request.Body) < 1 {
-		return events.APIGatewayProxyResponse{}, errors.New("no name was provided in the HTTP body")
-	}
+	b, _ := json.Marshal(body{Message: "hello world"})
 
 	return events.APIGatewayProxyResponse{
-		Body:       "Hello " + request.Body,
+		Body:       string(b),
 		StatusCode: 200,
 	}, nil
-
 }
 
 func main() {

@@ -13,7 +13,7 @@ resource "aws_s3_bucket_acl" "acl" {
 resource "aws_s3_object" "object" {
   bucket = aws_s3_bucket.bucket.id
 
-  key    = "${var.env}/${var.app}/${var.region}/${var.api_version}/api.zip"
+  key    = "${var.env}/${var.app}/${var.region}/${var.api_version}/build.zip"
   source = data.archive_file.artifact.output_path
 
   etag = filemd5(data.archive_file.artifact.output_path)

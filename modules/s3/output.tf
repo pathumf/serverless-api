@@ -8,3 +8,7 @@ output "archive_file_path" {
   value       = aws_s3_object.object.id
 
 }
+output "source_code_hash" {
+  description = "source_code_hash"
+  value       = data.archive_file.artifact.output_base64sha256
+}

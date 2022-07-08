@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"testing"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -9,21 +8,17 @@ import (
 )
 
 func TestHandler(t *testing.T) {
-
 	tests := []struct {
 		request events.APIGatewayProxyRequest
 		expect  string
 		err     error
 	}{
 		{
-			request: events.APIGatewayProxyRequest{Body: "World"},
-			expect:  "Hello World",
+			// Test that the handler responds with the correct response
+			// when a valid name is provided in the HTTP body
+			request: events.APIGatewayProxyRequest{},
+			expect:  `{"message":"hello world"}`,
 			err:     nil,
-		},
-		{
-			request: events.APIGatewayProxyRequest{Body: ""},
-			expect:  "",
-			err:     errors.New("no name was provided in the HTTP body"),
 		},
 	}
 
@@ -32,5 +27,4 @@ func TestHandler(t *testing.T) {
 		assert.IsType(t, test.err, err)
 		assert.Equal(t, test.expect, response.Body)
 	}
-
 }

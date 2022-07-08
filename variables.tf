@@ -21,4 +21,3 @@ variable "api_version" {
   default     = "v1.0.1"
   description = "Tag or commit hash"
 }
-

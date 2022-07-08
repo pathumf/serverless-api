@@ -32,6 +32,10 @@ jobs:
         run: terraform fmt -check -recursive modules
         continue-on-error: true
 
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
 
 
 # name: CI

@@ -41,9 +41,9 @@ jobs:
         id: init
         run: terraform init '-backend-config=bucket=tfstate-resources' '-backend-config=region=us-east-1' '-backend-config=key=tfstate/api/dev/serverless-api.tfstate'
 
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
+      # - name: Terraform Validate
+      #   id: validate
+      #   run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan

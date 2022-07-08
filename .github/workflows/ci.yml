@@ -42,7 +42,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -var -env=dev -var -aws_region=us-east-1 -var -api_version=${GITHUB_SHA::7}
+        run: terraform plan -var env=dev -var aws_region=us-east-1 -var api_version=${GITHUB_SHA::7}
         continue-on-error: true
 
 

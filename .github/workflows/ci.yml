@@ -18,7 +18,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - run: go test -v -race -covermode=atomic -coverprofile=coverage.out ./...
+      - name: Run Unit Test
+        run: go test -v -race -covermode=atomic -coverprofile=coverage.out ./...
         env: 
           CI: true #upload coverage.out as artifact
       - run: GOOS=linux GOARCH=amd64 go build -o build/. -trimpath ./cmd/main.go

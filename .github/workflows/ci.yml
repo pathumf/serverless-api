@@ -31,29 +31,29 @@ jobs:
       - name: Build Project
         run: GOOS=linux GOARCH=amd64 go build -o build/. -trimpath ./cmd/main.go
 
-      - uses: hashicorp/setup-terraform@v2
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check -recursive modules
-        continue-on-error: true
+      # - uses: hashicorp/setup-terraform@v2
+      # - name: Terraform fmt
+      #   id: fmt
+      #   run: terraform fmt -check -recursive modules
+      #   continue-on-error: true
 
       # - name: Terraform Init
       #   id: init
       #   run: terraform init '-backend-config=bucket=tfstate-resources' '-backend-config=region=us-east-1' '-backend-config=key=tfstate/api/dev/serverless-api.tfstate'
 
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
+      # - name: Terraform Validate
+      #   id: validate
+      #   run: terraform validate -no-color
 
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color -env=dev -aws_region=us-east-1 -api_version=v1.0.2
-        continue-on-error: true
+      # - name: Terraform Plan
+      #   id: plan
+      #   run: terraform plan -no-color -env=dev -aws_region=us-east-1 -api_version=v1.0.2
+      #   continue-on-error: true
 
-        - name: Terraform Plan Status
-        if: steps.plan.outcome == 'failure'
-        run: exit 1
+      #   - name: Terraform Plan Status
+      #   if: steps.plan.outcome == 'failure'
+      #   run: exit 1
 
-        - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false -env=dev -aws_region=us-east-1 -api_version=${GITHUB_SHA::8}
+      #   - name: Terraform Apply
+      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      #   run: terraform apply -auto-approve -input=false -env=dev -aws_region=us-east-1 -api_version=${GITHUB_SHA::8}

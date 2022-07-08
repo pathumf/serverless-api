@@ -29,7 +29,7 @@ jobs:
           CI: true #upload coverage.out as artifact
 
       - name: Build Project
-        run: GOOS=linux GOARCH=amd64 go build -o build/. -trimpath ./cmd/main.go
+      - run: GOOS=linux GOARCH=amd64 go build -o build/. -trimpath ./cmd/main.go
 
       # - uses: hashicorp/setup-terraform@v2
       # - name: Terraform fmt
